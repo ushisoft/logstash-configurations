@@ -1,0 +1,1 @@
+QJD_LOGBASE %{TIMESTAMP_ISO8601:log_time} %{NOTSPACE:thread_name} \[%{JAVACLASS:class_name}:%{NUMBER:code_line}\] %{LOGLEVEL:log_level}\s*:\s*%{GREEDYDATA:syslog_message}
