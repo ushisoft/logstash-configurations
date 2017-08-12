@@ -1,1 +1,9 @@
-QJD_LOGBASE %{TIMESTAMP_ISO8601:log_time} %{NOTSPACE:thread_name} \[%{JAVACLASS:class_name}:%{NUMBER:code_line}\] %{LOGLEVEL:log_level}\s*:\s*%{GREEDYDATA:syslog_message}
+QJDLOGBASE %{TIMESTAMP_ISO8601:log_time} %{LOGLEVEL:log_level}
+
+QJDJAVABASE %{QJDLOGBASE} %{NOTSPACE:thread_name} \[%{JAVACLASS:class_name}:%{NUMBER:code_line}\]
+
+QJDJAVAFULL %{QJDJAVABASE} \- %{GREEDYDATA:syslog}
+
+QJDHTTPREQUEST Request\: \"%{WORD:http_method} %{URIPATHPARAM:http_uri}(?: HTTP/%{NUMBER:http_version})?\"
+
+QJDOPERUSER User\: \"%{GREEDYDATA:user}\"
